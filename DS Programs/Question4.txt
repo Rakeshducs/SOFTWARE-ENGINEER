@@ -1,0 +1,74 @@
+/* Question 4:- WAP that generate all the permutations of a given set of digits , with or without repetition (For Example, if the given set is {1,2}, the permutations are 12 and 21 ).*/
+#include<iostream>
+using namespace std;
+int main()
+    {
+        cout<<"Enter the size of the set \n";
+        int size;
+        cin>>size;
+        int *set;
+        set=new int[size];
+        cout<<"THANKS! Please now enter elements \n";
+        for(int i=0;i<size;i++)
+        cin>>set[i];
+        cout<<"Your set is \n";
+        cout<<"{";
+            for(int i=0;i<size;i++)
+            {
+                if(i>0&&i<size)
+                cout<<",";
+            cout<<set[i];
+        }
+            cout<<"}\n";
+            int fact=1,m=0;
+            for(int i=size;i>=1;i--)
+            fact*=i;
+            cout<<"Your permutation is \n";
+            int p=0,q=1;
+            for(int i=0;i<fact;i++)
+            {
+                int indi=0,rakesh=0;
+                if(m>size)
+                m=1;
+                for(int j=0;j<size;j++)
+                {
+                    if(i==0)
+                    cout<<set[j];
+                    else
+                    { if(indi==0){
+                        p=m;
+                        if(m>=size)
+                         p=1;
+                         if(m==3)
+                         p=1;
+                       //  if(m>size)
+                         //p=2;
+                        int temp=set[size-p];
+                        if(m==size){
+                        set[size-p]=set[size-m];
+                        set[size-m]=temp;
+                    }else if(m>size){
+                        set[size-p]=set[p];
+                        set[p]=temp;
+                    }
+                        else if(m==3&&m!=size){
+                        set[size-p]=set[size-(p+2)];
+                        set[size-(p+2)]=temp;
+                        rakesh=1;
+                    }
+                    else
+                        set[size-p]=set[size-(p+1)];
+                        if(m<size&&rakesh==0)
+                        set[size-(p+1)]=temp;
+                        indi=1;
+                    }
+                        cout<<set[j];
+                    }
+                }
+                q++;
+                m++;
+                cout<<"  ";
+            }
+        }
+    
+    

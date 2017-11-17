@@ -1,0 +1,14 @@
+/*Question 5:- For any number n(say 4 or 5), write a program to list all the solutions of the equation x1+x2+x3+.....+xn=c, where c is a constant , where x1,x2,x3,.....xn are non negative 
+integers.*/
+#include<iostream>
+using namespace std;
+int main()
+{
+	cout<<"Enter an integers to get sum from 1 to upto your number\n";
+	int num;
+	cin>>num;
+	int sum=0;
+	for(int i=1;i<=num;i++)
+	sum+=i;
+	cout<<"SUM IS "<<sum;
+}

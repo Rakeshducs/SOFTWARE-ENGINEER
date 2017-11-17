@@ -1,0 +1,36 @@
+/* Question 17:- WAP to represent Graphs using the Adjancency matrix and check if it is a complete graph.*/
+#include<iostream>
+using namespace std;
+int main()
+{
+	cout<<"Enter the dimension of Adjancency Matrix\n";
+	int m,n,count=0,indi=0,i,j;
+	cin>>m;
+	cin>>n;
+	int **Matrix=new int*[m];
+	for(i=0;i<m;i++)
+	Matrix[i]=new int[n];
+	cout<<"Enter the elements of Matrix\n";
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		cin>>Matrix[i][j];
+	}
+	cout<<"Your Matrix is \n";
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(Matrix[i][j]==1)
+			count++;
+			cout<<Matrix[i][j];
+		}
+		if(count>1)
+		indi++;
+		cout<<endl;
+	}
+	if(indi==m)
+	cout<<"Your Graph is a complete Graph\n";
+	else
+	cout<<"Your Graph is not a complete Graph\n";
+}

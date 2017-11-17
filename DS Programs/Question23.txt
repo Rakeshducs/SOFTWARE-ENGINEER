@@ -1,0 +1,112 @@
+/* Question 23:- Given an adjancency matrix of a graph , write a program to find out if there exists an Euler path/euler circuit or not .*/
+#include<iostream>
+using namespace std;
+int main()
+{
+	cout<<"Enter the dimension of adjancency matrix\n";
+	int m,n,i,j,count=0,indi=0,odd=0;
+	cin>>m;
+	cin>>n;
+	int **matrix=new int*[m];
+	for(i=0;i<m;i++)
+	matrix[i]=new int[n];
+	cout<<"Enter the elements\n";
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		cin>>matrix[i][j];
+		
+	}
+	cout<<"Your matrix is \n";
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			if(matrix[i][j]==1)
+			count++;
+			cout<<matrix[i][j];
+		}
+		if(count%2==0)
+		indi++;
+		else
+		odd++;
+		cout<<endl;
+	}
+	if(indi==m)
+	cout<<"Your graph have Eulerian path and Eulerian circuit \n";
+	else if(odd>0&&odd<3)
+	cout<<"your graph have only have  Eulerian path \n";
+	else
+	cout<<"Your graph neither have Eulerian path nor Eulerain circuit\n";
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

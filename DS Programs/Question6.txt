@@ -1,0 +1,178 @@
+/*WAP to take a logical expression from a user and generate its truth table.
+If the truth values of propositions x and y are given, write a program to find the truth values of the following statements for the propositions x and y
+a) Conjunction
+b) Disjunction
+c) Exclusive OR
+d) Conditional
+e) Biconditional
+*/
+#include<iostream>
+using namespace std;
+void Conjunction(char **m,int n)
+{ int i,j,indi=0;
+	cout<<"X  Y  X.Y"<<endl;
+	for(i=0;i<n;i++)
+	{indi=0;
+		for(j=0;j<2;j++)
+		{
+			if(m[i][j]=='F')
+			indi=1;
+		}
+		for(j=0;j<2;j++)
+		{
+		cout<<m[i][j]<<"  ";
+		}
+		if(indi==1)
+		cout<<"F\n";
+		else
+		cout<<"T\n";
+		}
+		}
+void Disjunction(char **m,int n)
+{ int i,j,indi=0;
+	cout<<"X  Y  X+Y"<<endl;
+	for(i=0;i<n;i++)
+	{ indi=0;
+		for(j=0;j<2;j++)
+		{
+			if(m[i][j]=='T')
+			indi=1;
+		}
+		for(j=0;j<2;j++)
+		{
+			cout<<m[i][j]<<"  ";
+		}
+		if(indi==1)
+		cout<<"T\n";
+		else
+		cout<<"F\n";
+	}
+}
+void ExclusiveOR(char **m,int n)
+{  int i,j,indi=0;
+	cout<<"X  Y  Xor"<<endl;
+	for(i=0;i<n;i++)
+	{ indi=0;
+		for(j=0;j<2;j++)
+		{
+		 if(m[i][j]=='T')
+		 indi++;	
+		}
+		for(j=0;j<2;j++)
+		{
+			cout<<m[i][j]<<"  ";
+		}
+		if(indi==1)
+		cout<<"T\n";
+		else
+		cout<<"F\n";
+	}
+}
+void Conditional(char **m,int n)
+{ int i,j,indi=0;
+	cout<<"X  Y  X->Y"<<endl;
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<2;j++)
+		{
+		if(j==0)
+		if(m[i][j]=='T')
+		indi++;
+		if(j==1)
+		if(m[i][j]=='F')
+		indi++;
+		}
+		for(j=0;j<2;j++)
+		{
+			cout<<m[i][j]<<"  ";
+		}
+		if(indi==2)
+		cout<<"F\n";
+		else
+		cout<<"T\n";
+	}
+}
+void Biconditional(char **m,int n)
+{ int i,j,indi=0,in=0;
+	cout<<"X  Y  X<->Y"<<endl;
+	for(i=0;i<n;i++)
+	{indi=0;
+	in=0;
+		for(j=0;j<2;j++)
+		{
+			if(m[i][j]=='T')
+			indi++;
+			if(m[i][j]=='F')
+			in++;
+	}
+	for(j=0;j<2;j++)
+	{
+		cout<<m[i][j]<<"  ";
+	}
+	if(indi==2||in==2)
+	cout<<"T\n";
+	else
+	cout<<"F\n";
+	}
+}
+int main()
+{
+	char **ch;
+	while(1){
+	cout<<"Enter the number of propositions that is row"<<endl;
+	int n,i,j;
+	cin>>n;
+	ch=new char*[n];
+	for( i=0;i<n;i++)
+	ch[i]=new char[2];
+	cout<<"Enter propositions "<<endl;
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<2;j++)
+		cin>>ch[i][j];
+	}
+	cout<<"THANKS! Your input are\n";
+	cout<<"X  Y\n";
+	for(i=0;i<n;i++)
+	{
+		for(j=0;j<2;j++)
+		cout<<ch[i][j]<<"  ";
+	cout<<endl;
+	}
+	cout<<"ENTER YOUR CHOICE!"<<endl;
+	cout<<"ENTER 1: for CONJUCTION\n";
+	cout<<"Enter 2: for DISCONJUNCTION\n";
+	cout<<"ENTER 3: for EXCLUSIVE_OR\n";
+	cout<<"ENTER 4: for CONDITIONAL\n";
+	cout<<"ENTER 5: for BICONDITIONAL\n";
+	int choice;
+	cin>>choice;
+	switch(choice){
+		case 1:
+			Conjunction(ch,n);
+			break;
+			case 2:
+				Disjunction(ch,n);
+				break;
+				case 3:
+					ExclusiveOR(ch,n);
+					break;
+					case 4:
+						Conditional(ch,n);
+						break;
+						case 5:
+							Biconditional(ch,n);
+							break;
+							default:
+								cout<<"WRONG CHOICE!\n";
+								
+					
+	}
+	cout<<"Enter 0 to exit\n";
+	int exit;
+	cin>>exit;
+	if(exit==0)
+	break;
+}
+return 0;
+}

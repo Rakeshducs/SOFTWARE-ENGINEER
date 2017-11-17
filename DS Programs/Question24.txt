@@ -1,0 +1,43 @@
+/* Question 24:- Given an adjancency matrix of  a graph, write a program to find out if there exists a Hamilton path/ Hamilton circuit or not .*/
+#include<iostream>
+using namespace std;
+int main()
+{
+	cout<<"Enter the dimension of adjancency matrix\n";
+	int m,n,i,j,count=0;
+	cin>>m;
+	cin>>n;
+	int **matrix;
+	matrix=new int*[m];
+	for(i=0;i<m;i++)
+	matrix[i]=new int[n];
+	cout<<"Enter the elements of matrix\n";
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		cin>>matrix[i][j];
+	}
+	int degree=0;
+	cout<<"Your matrix is \n";
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++){
+		if(matrix[i][j]==1)
+		degree++;
+	
+		cout<<matrix[i][j];
+	}
+		if(matrix[i][i+1]==1)
+		count++;
+		cout<<endl;
+	}
+	if(degree>=m-1)
+	cout<<"Your graph is having Hamilton path ";
+	else
+	cout<<"Your graph is not having Hamilton path\n";
+	if(matrix[m-1][0]==1)
+	count++;
+	if(count==m)
+	cout<<"And  having Hamilton circuit too\n";
+	
+}

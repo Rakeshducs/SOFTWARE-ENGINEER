@@ -1,0 +1,36 @@
+/* Question 18:- Take input as an adjancency matrix for an undirected simple graph , write a program to check whether the graph is a tree or not.*/
+#include<iostream>
+using namespace std;
+int main()
+{
+	cout<<"Enter the dimension of Adjancency Matrix\n";
+	int m,n,i,j,count=0;
+	cin>>m;
+	cin>>n;
+	int **Matrix=new int*[m];
+	for(i=0;i<m;i++)
+	Matrix[i]=new int[n];
+	cout<<"Enter the elements of Matrix\n";
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		cin>>Matrix[i][j];
+	}
+	cout<<"Your Matrix is \n";
+	for(i=0;i<m;i++)
+	{
+		for(j=0;j<n;j++)
+		{
+			cout<<Matrix[i][j];
+		}
+		cout<<endl;
+		if(Matrix[i][i+1]==1)
+		count++;
+	}
+	if(Matrix[m-1][0]==1)
+	count++;
+ if(count==m)
+ cout<<"Your graph is not Tree\n";
+ else
+ cout<<"Your graph is Tree\n";
+}
